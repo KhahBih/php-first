@@ -1,6 +1,11 @@
 <?php 
+    session_start();
     require('db.php');
     $error = "";
+
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true){
+        header('Location: admin.php');
+    }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
