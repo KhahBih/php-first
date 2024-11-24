@@ -26,4 +26,14 @@
     function redirect($url){
         header('Location: '.baseUrl($url));
     }
+
+    function isPostRequest(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        
+        }
+    }
+
+    function getPostData($field, $default = null){
+        return isset($_POST[$field]) ? trim($_POST[$field]) : $default;
+    }
 ?>

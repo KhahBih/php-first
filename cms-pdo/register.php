@@ -1,13 +1,17 @@
 <?php 
     include 'partials/header.php';
     include 'partials/nav-bar.php';
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        
+    }
 ?>
 <!-- Main Content -->
 <main class="container my-5">
         <h2 class="text-center mb-4">Register</h2>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form action="welcome.html" method="post">
+                <form method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Full Name *</label>
                         <input

@@ -2,6 +2,8 @@
     include 'partials/header.php';
     include 'partials/nav-bar.php';
     include 'partials/hero.php';
+    $db = new Database();
+    var_dump($db->getConnection());
 ?>
 <!-- Main Content -->
     <main class="container my-5">
