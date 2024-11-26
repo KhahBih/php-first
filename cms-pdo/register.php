@@ -2,8 +2,17 @@
     include 'partials/header.php';
     include 'partials/nav-bar.php';
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        
+    if(isPostRequest()){
+        $username = getPostData('username');
+        $password = getPostData('password');
+        $email = getPostData('email');
+
+        $user = new User();
+        if($user->register($username, $email, $password)){
+            redirect('index.php');
+        }else{
+            echo "Registration failed!";
+        }
     }
 ?>
 <!-- Main Content -->
@@ -13,39 +22,22 @@
             <div class="col-md-6">
                 <form method="post">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Full Name *</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="name"
-                            required
-                        >
+                        <label for="name" class="form-label">UserName *</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address *</label>
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            required
+                        <input type="email" class="form-control" id="email" name="email" required
                         >
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password *</label>
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            required
+                        <input type="password" class="form-control" id="password" name="password" required
                         >
                     </div>
                     <div class="mb-3">
                         <label for="confirm-password" class="form-label">Confirm Password *</label>
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="confirm-password"
-                            required
+                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" required
                         >
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Register</button>
